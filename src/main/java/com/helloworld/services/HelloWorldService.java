@@ -35,9 +35,6 @@ public class HelloWorldService {
 	@Autowired
 	Validator validator;
 
-	int f[] = null;
-	int i=2;
-
 	public List<AppInfo> getAllApps() {
 
 		List<AppEntity> appEntities = appDetailRepository.getAllApps();
@@ -118,23 +115,11 @@ public class HelloWorldService {
 		return true;
 	}
 
-	public int[] getFibonacciSeries(int num) {
+	public Long[] getFibonacciSeries(int num) {
 
-		if (i==2) {
-			f = new int[num+1];
-			f[0]=0;
-			f[1]=1;
-		}
-		if (num == 1) {
-			i=2;
-			return f; 
-		}
+		FibeSeries fibeSeries = new FibeSeries(num);
 
-		f[i]= f[i-1] + f[i-2];
-		i++;
-		getFibonacciSeries(num-1);
-
-		return f; 
+		return fibeSeries.getFibonacciSeries(num); 
 
 	}
 

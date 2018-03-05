@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
  */
 
 @Api("The application catalog service is used to return apps and apps versions")
-public interface  HellowWorldService {
+public interface  HelloWorldControllerService {
 
 
 	@ApiOperation(value = "Gets all Apps Details.")
@@ -45,7 +45,7 @@ public interface  HellowWorldService {
 
 	@GetMapping(value = "/fibo/{num}")
 	@ApiOperation(value = "Get fibonacci series")
-	int [] getFibonacciSeries(@PathVariable(value = "num") int num);
+	Long[] getFibonacciSeries(@PathVariable(value = "num") int num);
 
 	@GetMapping(value = "/externalUsers")
 	@ApiOperation(value = "Get USers from https://jsonplaceholder.typicode.com/posts service")

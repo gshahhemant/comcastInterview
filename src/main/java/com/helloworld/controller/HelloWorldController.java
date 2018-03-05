@@ -17,7 +17,7 @@ import com.helloworld.threadDeadLock.TestDeadlock;
  */
 
 @RestController
-public class HelloWorldController implements HellowWorldService {
+public class HelloWorldController implements HelloWorldControllerService {
 
 	@Autowired
 	HelloWorldService helloWorldService;
@@ -53,7 +53,7 @@ public class HelloWorldController implements HellowWorldService {
 
 
 	@Override
-	public int[] getFibonacciSeries(@PathVariable("num") int num) {
+	public Long[] getFibonacciSeries(@PathVariable("num") int  num) {
 		return helloWorldService.getFibonacciSeries(num);
 	}
 
