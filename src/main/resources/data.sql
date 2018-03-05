@@ -1,0 +1,2 @@
+insert into app_detail (name,short_description,long_description,major_version,minor_version,patch_version,company_name,publisher_name)
+values('StarBugApp','Starbug AppShort detai','long detail',1,1,2,'StarBug company','starrbugpublisher');
