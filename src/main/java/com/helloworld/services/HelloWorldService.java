@@ -4,116 +4,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.helloworld.exception.HelloWorldException;
 import com.helloworld.exception.HelloWorldExceptionCode;
 import com.helloworld.feign.external.ExternalClient;
-import com.helloworld.jpa.model.AppEntity;
-import com.helloworld.model.AppInfo;
+import com.helloworld.jpa.model.CustomberEntity;
+import com.helloworld.model.Customber;
 import com.helloworld.model.ExternalUser;
-import com.helloworld.repository.AppDetailRepository;
-import com.helloworld.translator.AppTranslator;
-import com.helloworld.validator.Validator;
-
-/**
- * @author Hemant Shah
- */
+import com.helloworld.repository.CustomberRepository;
+import com.helloworld.translator.CustomberTranslator;
 
 @Service
 public class HelloWorldService {
 
 	@Autowired
-	AppDetailRepository  appDetailRepository;
+	CustomberRepository  customberRepository;
 
 	@Autowired
 	ExternalClient  externalClient;
-
+	
 	@Autowired
-	AppTranslator  appTranslator;
-
-	@Autowired
-	Validator validator;
-
-	public List<AppInfo> getAllApps() {
-
-		List<AppEntity> appEntities = appDetailRepository.getAllApps();
-
-		if (appEntities == null || appEntities.isEmpty())
-			throw new HelloWorldException(HelloWorldExceptionCode.NO_APPS_FOUND);
-		else
-			return appTranslator.translate(appEntities);
-	}
-
-	public AppInfo getApp(int appId) {
-
-		if(appId < 0) {
-			throw new HelloWorldException(HelloWorldExceptionCode.INVALID_APPID);
-		}
-
-		AppEntity appEntity = appDetailRepository.getAppById(appId);
-
-		if (appEntity == null )
-			throw new HelloWorldException(HelloWorldExceptionCode.NO_APPS_FOUND);
-		else
-			return appTranslator.translate(appEntity);
-
-	}
-
-	public AppInfo createApp(AppInfo appInfo) {
-
-
-		if (!validator.appValidation(appInfo)){
-
-			throw new HelloWorldException(HelloWorldExceptionCode.INPUT_FIELD_VALIDATION_FAILED);
-		}
-
-		AppEntity appEntity =appTranslator.translateToAppEntity(appInfo);
-
-		appDetailRepository.save(appEntity);
-
-		appInfo.setAppId(appEntity.getAppId());
-
-		return appInfo;
-	}
-
-	public AppInfo updateApp(int appId, @RequestBody AppInfo appInfo) {
-
-		if (!validator.appValidation(appInfo)){
-
-			throw new HelloWorldException(HelloWorldExceptionCode.INPUT_FIELD_VALIDATION_FAILED);
-		}
-
-		AppEntity appEntity = appDetailRepository.getAppById(appId);
-
-		if(appEntity == null) {
-
-			throw new HelloWorldException(HelloWorldExceptionCode.NO_APPS_FOUND);
-		}else {
-			appEntity =appTranslator.translateAppToUpdate(appEntity,appInfo);
-			appDetailRepository.save(appEntity);
-			appInfo.setAppId(appEntity.getAppId());
-		}
-
-		return appInfo;
-	}
-
-	public boolean deleteApp(int appId) {
-
-		if(appId < 0) {
-			throw new HelloWorldException(HelloWorldExceptionCode.INVALID_APPID);
-		}
-
-		AppEntity appEntity = appDetailRepository.getAppById(appId);
-
-		if(appEntity == null) 
-
-			throw new HelloWorldException(HelloWorldExceptionCode.NO_APPS_FOUND);
-		else
-			appDetailRepository.delete(appEntity);
-
-		return true;
-	}
+	CustomberTranslator customberTranslator;
 
 	public Long[] getFibonacciSeries(int num) {
 
@@ -133,4 +44,26 @@ public class HelloWorldService {
 			return externalUsers;
 	}
 
+	public List<Customber> getAllCustombers() {
+
+		List<CustomberEntity>  customerEntities = customberRepository.getAllCustombers();
+
+		if (customerEntities == null || customerEntities.isEmpty())
+			throw new HelloWorldException(HelloWorldExceptionCode.NO_CUSTOMBER_FOUND);
+		else
+			return customberTranslator.translate(customerEntities);
+
+	}
+
+	public Customber getAllCustomberById(int  customberId) {
+
+		CustomberEntity  customberEntity = customberRepository.getCustomberById(customberId);
+
+		if (customberEntity == null )
+			throw new HelloWorldException(HelloWorldExceptionCode.NO_CUSTOMBER_FOUND);
+		else
+			return customberTranslator.translate(customberEntity);
+
+	}
+	
 }

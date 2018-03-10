@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-/**
- * @author TZVZCY
- */
 public abstract class AbstractModelTranslator<T, K> implements ModelTranslator<T, K> {
 
     @Override

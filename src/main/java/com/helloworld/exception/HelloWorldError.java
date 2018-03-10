@@ -3,12 +3,10 @@ package com.helloworld.exception;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-/**
- * @author Hemant Shah
- */
 
 public class HelloWorldError implements Serializable {
 
@@ -18,6 +16,13 @@ public class HelloWorldError implements Serializable {
 	private String reasonCode;
 	private String message;
 	private String detailMessage;
+	private List<String> validationErrors;
+
+
+
+	public void setValidationErrors(List<String> validationErrors) {
+		this.validationErrors = validationErrors;
+	}
 
 	public HelloWorldError(HttpStatus httpStatus, String reasonCode, String message) {
 		this.httpStatus = httpStatus;
@@ -71,5 +76,9 @@ public class HelloWorldError implements Serializable {
 	public void setDetailMessage(String detailMessage) {
 		this.detailMessage = detailMessage;
 	}
+	public List<String> getValidationErrors() {
+		return validationErrors;
+	}
+
 
 }

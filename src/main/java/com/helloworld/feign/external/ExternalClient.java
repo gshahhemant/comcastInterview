@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.helloworld.model.ExternalUser;
 
-/**
- * @author Hemant Shah
- */
-
 @FeignClient(name = "external-user-service-client", url = "https://jsonplaceholder.typicode.com")
 public interface ExternalClient {
 

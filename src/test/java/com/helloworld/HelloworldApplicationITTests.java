@@ -8,10 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helloworld.model.AppInfo;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -29,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 		)
 @AutoConfigureMockMvc
 public class HelloworldApplicationITTests {
-
+/*
 	@Autowired
 	MockMvc  mockMvc;
 
@@ -109,5 +106,6 @@ public class HelloworldApplicationITTests {
 
 
 	}
+	*/
 
 }

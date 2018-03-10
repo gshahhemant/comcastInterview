@@ -3,7 +3,7 @@ package com.helloworld.validator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import com.helloworld.model.AppInfo;
+/*
 
 @Service
 public class Validator {
@@ -21,3 +21,4 @@ public class Validator {
 	}
 
 }
+*/

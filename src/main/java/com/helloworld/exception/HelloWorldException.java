@@ -2,9 +2,6 @@ package com.helloworld.exception;
 
 import org.springframework.http.HttpStatus;
 
-/**
- * @author Hemant Shah
- */
 public class HelloWorldException extends RuntimeException {
 
 

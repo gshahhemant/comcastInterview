@@ -9,9 +9,6 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-/**
- * @author Hemant Shah
- */
 @Configuration
 public class SwaggerConfiguration  {
 

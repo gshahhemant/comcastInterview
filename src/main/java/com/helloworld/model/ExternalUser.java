@@ -2,10 +2,6 @@ package com.helloworld.model;
 
 import java.io.Serializable;
 
-/**
- * @author Hemant Shah
- */
-
 public class ExternalUser implements Serializable {
 
 	private static final long serialVersionUID = 421376107126832008L;

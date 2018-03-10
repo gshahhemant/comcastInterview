@@ -6,10 +6,6 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @author Hemant Shah
- */
-
 @SpringBootApplication
 @EnableSwagger2
 @EnableFeignClients

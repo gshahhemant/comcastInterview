@@ -4,17 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helloworld.model.AppInfo;
+import com.helloworld.model.Customber;
 import com.helloworld.model.ExternalUser;
+import com.helloworld.model.Transaction;
 import com.helloworld.services.HelloWorldService;
 import com.helloworld.threadDeadLock.TestDeadlock;
 
-/**
- * @author Hemant Shah
- */
+
 
 @RestController
 public class HelloWorldController implements HelloWorldControllerService {
@@ -22,35 +20,33 @@ public class HelloWorldController implements HelloWorldControllerService {
 	@Autowired
 	HelloWorldService helloWorldService;
 
-
-
 	@Override
-	public List<AppInfo> getAllApps() {
-		return helloWorldService.getAllApps();
+	public Customber createCustomer(Customber customber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public AppInfo getApp(@PathVariable(value = "appId") int appId) {
-
-		return helloWorldService.getApp(appId);
+	public Customber updateCustomer(Customber customber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public AppInfo createApp(@RequestBody AppInfo appInfo) {
-
-		return helloWorldService.createApp(appInfo);
+	public Transaction createTransaction(Transaction transaction) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public AppInfo updateApp(@PathVariable("appId") int appId, @RequestBody AppInfo appInfo) {
-		return helloWorldService.updateApp(appId, appInfo);
+	public List<Customber> getAllCustombers() {
+		return helloWorldService.getAllCustombers();
 	}
 
 	@Override
-	public boolean deleteApp(@PathVariable("appId") int appId) {
-		return helloWorldService.deleteApp(appId);
+	public Customber getCustomber(@PathVariable(value="customberId") int customberId) {
+		return helloWorldService.getAllCustomberById(customberId);
 	}
-
 
 	@Override
 	public Long[] getFibonacciSeries(@PathVariable("num") int  num) {
@@ -62,7 +58,7 @@ public class HelloWorldController implements HelloWorldControllerService {
 	{
 		return  helloWorldService.getExternalUsers();
 	}
-	
+
 	@Override
 	public String thredDeadLock()
 	{
@@ -72,7 +68,5 @@ public class HelloWorldController implements HelloWorldControllerService {
 		return	testDeadlock.getOutPut();
 
 	}
-
-
 
 }
