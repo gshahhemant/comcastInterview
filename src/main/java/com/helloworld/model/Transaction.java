@@ -1,9 +1,12 @@
 package com.helloworld.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Transaction {
 
 	
 	private long transactionId;
+	@NotBlank
 	private String transactionName;
 	private double amount;
 	

@@ -22,23 +22,27 @@ public class TransactionEntity {
 	@Column(name = "amount",nullable=false)
 	private double amount;
 	@ManyToOne()
-	@JoinColumn(name = "customber_Id")
-	private CustomberEntity customberEntity;
+	@JoinColumn(name = "customer_Id")
+	private CustomerEntity customerEntity;
 			
 	
 	public TransactionEntity() {
 		
 	}
-	public TransactionEntity(long transactionId, String transactionName, double amount, CustomberEntity customberEntity) {
+	public TransactionEntity(long transactionId, String transactionName, double amount, CustomerEntity customerEntity) {
 		this.transactionId = transactionId;
 		this.transactionName = transactionName;
 		this.amount = amount;
-		this.customberEntity = customberEntity;
+		this.customerEntity = customerEntity;
 	}
-	public TransactionEntity(String transactionName, double amount, CustomberEntity customberEntity) {
+	public TransactionEntity(String transactionName, double amount, CustomerEntity customerEntity) {
 		this.transactionName = transactionName;
 		this.amount = amount;
-		this.customberEntity = customberEntity;
+		this.customerEntity = customerEntity;
+	}
+	public TransactionEntity(String transactionName, double amount) {
+		this.transactionName = transactionName;
+		this.amount = amount;
 	}
 	public long getTransactionId() {
 		return transactionId;
@@ -58,11 +62,11 @@ public class TransactionEntity {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public CustomberEntity getCustomer() {
-		return customberEntity;
+	public CustomerEntity getCustomer() {
+		return customerEntity;
 	}
-	public void setCustomer(CustomberEntity customberEntity) {
-		this.customberEntity = customberEntity;
+	public void setCustomer(CustomerEntity customerEntity) {
+		this.customerEntity = customerEntity;
 	}
 	@Override
 	public int hashCode() {

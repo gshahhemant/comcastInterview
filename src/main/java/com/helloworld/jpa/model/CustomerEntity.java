@@ -1,5 +1,6 @@
 package com.helloworld.jpa.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,13 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customber_info")
-public class CustomberEntity {
+@Table(name = "customer_info")
+public class CustomerEntity {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name = "customber_Id")
-	private int customberId;
+	@Column(name = "customer_Id")
+	private int customerId;
 	@Column(name = "first_name",nullable=false)
 	private String firstName;
 	@Column(name = "last_ame",nullable=false)
@@ -27,24 +28,31 @@ public class CustomberEntity {
 	private String address;
 	@Column(name = "phone_number",nullable=false, length=11)
 	private long phoneNumber;
-	@OneToMany(mappedBy = "customberEntity",cascade = CascadeType.ALL)
-	private Set<TransactionEntity> transactionEntities; 
+	@OneToMany(mappedBy = "customerEntity",cascade = CascadeType.ALL)
+	private Set<TransactionEntity> transactionEntities = new HashSet<TransactionEntity>(); 
 
-	public CustomberEntity() {
+	public CustomerEntity() {
 
 	}
 
-	public CustomberEntity(int customberId, String firstName, String lastName, String address, long phoneNumber,
+	public CustomerEntity(int customerId, String firstName, String lastName, String address, long phoneNumber,
 			Set<TransactionEntity> transactionEntities) {
-		this.customberId = customberId;
+		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.transactionEntities = transactionEntities;
 	}
+	
+	public CustomerEntity(String firstName, String lastName, String address, long phoneNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
 
-	public CustomberEntity(String firstName, String lastName, String address, long phoneNumber,
+	public CustomerEntity(String firstName, String lastName, String address, long phoneNumber,
 			Set<TransactionEntity> transactionEntities) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -52,12 +60,12 @@ public class CustomberEntity {
 		this.phoneNumber = phoneNumber;
 		this.transactionEntities = transactionEntities;
 	}
-	public int getCustomberId() {
-		return customberId;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomberId(int customberId) {
-		this.customberId = customberId;
+	public void setCustomberId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getFirstName() {
@@ -104,7 +112,7 @@ public class CustomberEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + customberId;
+		result = prime * result + customerId;
 		return result;
 	}
 
@@ -116,8 +124,8 @@ public class CustomberEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CustomberEntity other = (CustomberEntity) obj;
-		if (customberId != other.customberId)
+		CustomerEntity other = (CustomerEntity) obj;
+		if (customerId != other.customerId)
 			return false;
 		return true;
 	}

@@ -2,11 +2,15 @@ package com.helloworld.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.helloworld.model.Customber;
+import com.helloworld.model.Customer;
+import com.helloworld.model.CustomerInfo;
 import com.helloworld.model.ExternalUser;
 import com.helloworld.model.Transaction;
 import com.helloworld.services.HelloWorldService;
@@ -21,31 +25,43 @@ public class HelloWorldController implements HelloWorldControllerService {
 	HelloWorldService helloWorldService;
 
 	@Override
-	public Customber createCustomer(Customber customber) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerInfo createCustomer(@Valid @RequestBody CustomerInfo customerInfo) {
+		return helloWorldService.createCustomer(customerInfo);
 	}
 
 	@Override
-	public Customber updateCustomer(Customber customber) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerInfo updateCustomer(@PathVariable(value="customerId") int customerId ,@Valid @RequestBody  CustomerInfo customerInfo) {
+		return helloWorldService.updateCustomer(customerId,customerInfo);
 	}
 
 	@Override
-	public Transaction createTransaction(Transaction transaction) {
-		// TODO Auto-generated method stub
-		return null;
+	public Transaction addTransaction(@PathVariable(value="customerId") int customerId , @Valid @RequestBody Transaction transaction) {
+		return helloWorldService.addTransaction(customerId, transaction);
 	}
 
 	@Override
-	public List<Customber> getAllCustombers() {
-		return helloWorldService.getAllCustombers();
+	public Transaction updateTransaction(@PathVariable(value="transactionId") long transactionId , @Valid @RequestBody Transaction transaction) {
+		return helloWorldService.updateTransaction(transactionId,transaction);
 	}
 
 	@Override
-	public Customber getCustomber(@PathVariable(value="customberId") int customberId) {
-		return helloWorldService.getAllCustomberById(customberId);
+	public List<Customer> getAllCustomers() {
+		return helloWorldService.getAllCustomers();
+	}
+
+	@Override
+	public Customer getCustomber(@PathVariable(value="customerId") int customerId) {
+		return helloWorldService.getAllCustomerById(customerId);
+	}
+
+	@Override
+	public boolean deleteCustomber(@PathVariable(value="customerId") int customerId) {
+		return helloWorldService.deleteCustomer(customerId);
+	}
+
+	@Override
+	public boolean deleteTransaction(@PathVariable(value="transactionId") long transactionId ) {
+		return helloWorldService.deleteTransaction(transactionId);
 	}
 
 	@Override
@@ -66,7 +82,5 @@ public class HelloWorldController implements HelloWorldControllerService {
 		testDeadlock.trd1.start();
 		testDeadlock.trd2.start();
 		return	testDeadlock.getOutPut();
-
 	}
-
 }
