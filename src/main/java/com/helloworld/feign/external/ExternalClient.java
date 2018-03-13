@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.helloworld.model.ExternalUser;
 
-@FeignClient(name = "external-user-service-client", url = "https://jsonplaceholder.typicode.com")
+@FeignClient(name = "external-user-service-client", url = "https://jsonplaceholder.typicode.com" , fallback=ExternalClientFallbackImpl.class)
 public interface ExternalClient {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/posts")

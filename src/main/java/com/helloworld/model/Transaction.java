@@ -1,10 +1,12 @@
 package com.helloworld.model;
 
+import java.io.Serializable;
+
 import org.hibernate.validator.constraints.NotBlank;
 
-public class Transaction {
+public class Transaction implements Serializable{
 
-	
+	private static final long serialVersionUID = 5754973241517736329L;
 	private long transactionId;
 	@NotBlank
 	private String transactionName;

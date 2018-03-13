@@ -16,6 +16,7 @@ import com.helloworld.model.ExternalUser;
 import com.helloworld.model.Transaction;
 import com.helloworld.repository.CustomerRepository;
 import com.helloworld.repository.TransactionRepository;
+import com.helloworld.threadDeadLock.TestDeadlock;
 import com.helloworld.translator.CustomerEntityTranslator;
 import com.helloworld.translator.CustomerTranslator;
 import com.helloworld.translator.TransactionEntityTranslator;
@@ -188,6 +189,27 @@ public class HelloWorldService {
 			throw new HelloWorldException(HelloWorldExceptionCode.NO_USERS_FOUND);
 		else
 			return externalUsers;
+	}
+
+	/**
+	 * Two threads will get DeadLock 
+	 * @return if output will be StrignOne than no deadlock.
+	 */
+	public String thredDeadLock()
+	{
+		TestDeadlock  testDeadlock = new TestDeadlock();
+		testDeadlock.trd1.start();
+		testDeadlock.trd2.start();
+
+		try {
+			testDeadlock.trd1.join();
+			testDeadlock.trd2.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return	testDeadlock.getOutPut();
 	}
 
 }

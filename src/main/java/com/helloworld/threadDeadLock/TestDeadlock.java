@@ -4,7 +4,7 @@ public class TestDeadlock {
 
 	public	String strignOne = "StrignOne";
 	public  String stringtwo = "Stringtwo";
-	public String outPut="noRessult";
+	public String outPut="noResult";
 
 	public String getOutPut() {
 		return outPut;

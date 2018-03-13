@@ -14,7 +14,6 @@ import com.helloworld.model.CustomerInfo;
 import com.helloworld.model.ExternalUser;
 import com.helloworld.model.Transaction;
 import com.helloworld.services.HelloWorldService;
-import com.helloworld.threadDeadLock.TestDeadlock;
 
 
 
@@ -78,9 +77,6 @@ public class HelloWorldController implements HelloWorldControllerService {
 	@Override
 	public String thredDeadLock()
 	{
-		TestDeadlock  testDeadlock = new TestDeadlock();
-		testDeadlock.trd1.start();
-		testDeadlock.trd2.start();
-		return	testDeadlock.getOutPut();
+		return helloWorldService.thredDeadLock();
 	}
 }

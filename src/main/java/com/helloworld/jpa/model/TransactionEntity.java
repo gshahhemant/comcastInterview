@@ -1,5 +1,7 @@
 package com.helloworld.jpa.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "transaction_detail")
-public class TransactionEntity {
+public class TransactionEntity implements Serializable{
 
+	private static final long serialVersionUID = -6426603128136040022L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name = "transaction_Id")
@@ -24,10 +27,10 @@ public class TransactionEntity {
 	@ManyToOne()
 	@JoinColumn(name = "customer_Id")
 	private CustomerEntity customerEntity;
-			
-	
+
+
 	public TransactionEntity() {
-		
+
 	}
 	public TransactionEntity(long transactionId, String transactionName, double amount, CustomerEntity customerEntity) {
 		this.transactionId = transactionId;
@@ -88,5 +91,5 @@ public class TransactionEntity {
 			return false;
 		return true;
 	}
-	
+
 }

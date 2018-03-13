@@ -1,5 +1,6 @@
 package com.helloworld.jpa.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,8 +15,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer_info")
-public class CustomerEntity {
+public class CustomerEntity  implements Serializable{
 
+	private static final long serialVersionUID = -5931597488825620078L;
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_Id")

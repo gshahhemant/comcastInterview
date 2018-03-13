@@ -1,11 +1,14 @@
 package com.helloworld.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class Customer {
+public class Customer implements Serializable{
 
+	
+	private static final long serialVersionUID = -2004518066580690715L;
 	private int customberId;
 	private CustomerInfo customerInfo;
     private Set<Transaction> transactions = new HashSet<Transaction>();
