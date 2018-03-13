@@ -11,8 +11,6 @@ public class ExternalClientFallbackImpl implements ExternalClient {
 
 	@Override
 	public List<ExternalUser> getExternalUsers() {
-		
-		System.out.println("FAllback is being called");
 		return new ArrayList<ExternalUser>();
 	}
 
