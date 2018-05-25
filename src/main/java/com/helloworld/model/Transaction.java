@@ -8,7 +8,6 @@ public class Transaction implements Serializable{
 
 	private static final long serialVersionUID = 5754973241517736329L;
 	private long transactionId;
-	@NotBlank
 	private String transactionName;
 	private double amount;
 	

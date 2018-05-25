@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.helloworld.exception.HelloWorldException;
 import com.helloworld.exception.HelloWorldExceptionCode;
@@ -51,7 +52,8 @@ public class HelloWorldService {
 	 * Create Customer 
 	 * @return The CustomerInfo
 	 */
-	public CustomerInfo createCustomer(CustomerInfo customerInfo) {
+	@Transactional
+	public CustomerInfo createCustomer(CustomerInfo customerInfo)  {
 
 		CustomerEntity customberEntity = customerEntityTranslator.translate(customerInfo);
 		if (customberEntity != null) {
@@ -60,7 +62,7 @@ public class HelloWorldService {
 		}
 		return customerInfo;
 	}
-
+	
 	/**
 	 * Update Customer 
 	 * @return The CustomerInfo
@@ -83,6 +85,7 @@ public class HelloWorldService {
 	 */
 	public   Transaction addTransaction(int customberId ,Transaction transaction) {
 		CustomerEntity  customberEntity = customerRepository.findOne(customberId);
+				
 		if (customberEntity == null )
 			throw new HelloWorldException(HelloWorldExceptionCode.NO_CUSTOMBER_FOUND);
 		else {

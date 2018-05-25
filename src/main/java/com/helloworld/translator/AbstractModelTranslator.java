@@ -9,6 +9,7 @@ public abstract class AbstractModelTranslator<T, K> implements ModelTranslator<T
     @Override
     public List<K> translate(Iterable<T> original) {
         return StreamSupport.stream(original.spliterator(), false).map(item -> translate(item)).collect(Collectors.toList());
+                        
     }
 
 }

@@ -19,11 +19,12 @@ import io.swagger.annotations.ApiOperation;
 
 
 @Api("Store application which allow create customber accounts and create and maintain transactions for customers.")
+
 public interface  HelloWorldControllerService {
 
-	@ApiOperation(value = "Gets all Customers Details.")
+	/*@ApiOperation(value = "Gets all Customers Details.")
 	@GetMapping(value = "/customers")
-	List<Customer> getAllCustomers();
+	List<Customer> getAllCustomers();*/
 
 	@ApiOperation(value = "Gets Customer Details with the specified customer ID .")
 	@GetMapping(value = "/customer/{customerId}")

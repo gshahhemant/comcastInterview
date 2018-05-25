@@ -8,11 +8,12 @@ public class CustomerInfo implements Serializable {
 
 	private static final long serialVersionUID = -3209024208282628069L;
 	private int customberId;
+	
 	@NotBlank
 	private String firstName;
-	@NotBlank
+	 
 	private String lastName;
-	@NotBlank
+	
 	private String address;
 	
 	private long phoneNumber;

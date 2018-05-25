@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.helloworld.jpa.model.CustomerEntity;
 
-public interface CustomerRepository extends CrudRepository<CustomerEntity, Integer> {
+public interface CustomerRepository extends  CrudRepository<CustomerEntity, Integer> {
 	
 	@Query("select distinct cd from CustomerEntity cd left join fetch cd.transactionEntities td order by cd.customerId")
 	public List<CustomerEntity> getAllCustombers();

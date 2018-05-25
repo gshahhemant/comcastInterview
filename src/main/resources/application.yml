@@ -14,23 +14,16 @@ spring:
     properties:
       hibernate:
         show_sql: true
-     
-        
 
-###
+      
+
 #   H2 Settings
-###
   h2:
     console:
       enabled: true
       path: /console
-      
-security:
-    basic:
-      enabled: false
-
+   
 feign:
   hystrix:
     enabled: true
-
-
+   
